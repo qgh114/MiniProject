@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form name="show-list" action="/show-list" method="POST">
+    Liste:<br>
+    <input type="text" name="title" >
+    <br>
+    <input type="submit" value="Opret">
+</form>
+<ul th:each="liste : ${WishList}">
+    <li th:text="${WishList}"></li>
+</ul>
+</body>
+</html>
