@@ -1,6 +1,6 @@
 package com.example.demo.homecontroller;
 
-import com.example.demo.data.WishItemMapper;
+import com.example.demo.dataAccessLayer.WishItemMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +22,12 @@ public class WController {
     }
 
 
+    @GetMapping("/create-show")
+    public String Home() {
+        return "create-show";
+    }
+
+
     @PostMapping("/create-list")
     public String createWishList(WebRequest request, Model model) throws SQLException {
         String title = request.getParameter("title");
@@ -30,7 +36,7 @@ public class WController {
 
 
         // Go to to page dependent on role
-        return "create-item";
+        return "redirect:create-show";
     }
 
     @PostMapping("/create-item")
@@ -55,8 +61,9 @@ public class WController {
         System.out.println(title);
         model.addAttribute("WishList", wishItemMapper.showList(title));
 
+
         // Go to to page dependent on role
-        return "show-list";
+        return "redirect:create-show";
 
     }
 }
