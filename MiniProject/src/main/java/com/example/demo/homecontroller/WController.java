@@ -22,12 +22,6 @@ public class WController {
     }
 
 
-    @GetMapping("/create-show")
-    public String Home() {
-        return "create-show";
-    }
-
-
     @PostMapping("/create-list")
     public String createWishList(WebRequest request, Model model) throws SQLException {
         String title = request.getParameter("title");
@@ -36,7 +30,7 @@ public class WController {
 
 
         // Go to to page dependent on role
-        return "redirect:create-show";
+        return "create-item";
     }
 
     @PostMapping("/create-item")
@@ -61,9 +55,8 @@ public class WController {
         System.out.println(title);
         model.addAttribute("WishList", wishItemMapper.showList(title));
 
-
         // Go to to page dependent on role
-        return "redirect:create-show";
+        return "show-list";
 
     }
 }
